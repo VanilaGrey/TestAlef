@@ -1,8 +1,12 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { defineStore } from "pinia";
+import { ref } from "vue";
 
-export const useAppDataStore = defineStore('appData', () => {
-	const data = ref({});
+export const useAppDataStore = defineStore("appData", () => {
+	const user = ref({
+		fullName: "",
+		age: "",
+		children: [],
+	});
 
-	return { data };
+	return { user };
 });

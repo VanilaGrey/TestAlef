@@ -1,16 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import IndexPage from '@/router/IndexPage.vue';
+import FormPage from '@/views/FormPage.vue';
+import PreviewPage from '@/views/PreviewPage.vue';
+
 
 const routes = [
 	{
 		path: '/',
-		name: 'index',
-		component: IndexPage,
+		name: 'form',
+		component: FormPage,
+	},
+	{
+		path: '/preview',
+		name: 'preview',
+		component: PreviewPage,
 	},
 ];
+
+// Разрешаем pixelperfect в dev
 if (import.meta.env.DEV) {
 	routes.push({ path: '/pixelperfect' });
 }
+
+// Обработка несуществующих маршрутов
 routes.push({
 	path: '/:catchAll(.*)',
 	redirect: '/',
@@ -22,3 +33,4 @@ const router = createRouter({
 });
 
 export default router;
+
