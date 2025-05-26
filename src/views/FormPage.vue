@@ -1,5 +1,5 @@
 <template>
-	<div class="page-form">
+	<form class="page-form" @submit.prevent="saveData">
 		<h1 class="page-form__title">Персональные данные</h1>
 
 		<div class="page-form__block">
@@ -17,22 +17,27 @@
 				type="number"
 			/>
 		</div>
+
 		<div class="page-form__block page-form__block--alter">
-			<h2 class="page-form__title">Дети ( макс. 5)</h2>
-			<BaseButton v-if="children.length < 5" @click="addChild"
-				>+ Добавить ребенка</BaseButton
-			>
+			<h2 class="page-form__title">Дети (макс. 5)</h2>
+			<BaseButton v-if="children.length < 5" @click="addChild">
+				+ Добавить ребенка
+			</BaseButton>
 		</div>
+
 		<div
 			class="page-form__block page-form__block--alter"
 			v-for="(child, index) in children"
 			:key="index"
 		>
 			<ChildForm v-model:name="child.name" v-model:age="child.age" />
-			<BaseButton type="text" @click="removeChild(index)">Удалить</BaseButton>
+			<BaseButton variant="text" @click="removeChild(index)"
+				>Удалить</BaseButton
+			>
 		</div>
-		<BaseButton @click="saveData()" type="filled">Сохранить</BaseButton>
-	</div>
+
+		<BaseButton htmlType="submit" variant="filled">Сохранить</BaseButton>
+	</form>
 </template>
 
 <script setup>
@@ -74,10 +79,10 @@ function saveData() {
 .page-form {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	margin: 0 auto;
 	width: 100%;
 	max-width: 620px;
+	margin: 0 auto;
+	gap: 20px;
 
 	&__block {
 		display: flex;

@@ -7,29 +7,34 @@
 			:value="modelValue"
 			@input="$emit('update:modelValue', $event.target.value)"
 			class="input__text"
+			:required="required"
 		/>
 	</div>
 </template>
 
 <script>
 export default {
-	name: "InputField",
-	props: {
-		modelValue: [String, Number],
-		label: {
-			type: String,
-			required: true,
-		},
-		placeholder: {
-			type: String,
-			default: "",
-		},
-		type: {
-			type: String,
-			default: "text",
-			validator: (val) => ["text", "number"].includes(val),
-		},
-	},
+  name: 'InputField',
+  props: {
+    modelValue: [String, Number],
+    label: {
+      type: String,
+      required: true,
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    type: {
+      type: String,
+      default: 'text',
+      validator: (val) => ['text', 'number'].includes(val),
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 
@@ -37,9 +42,9 @@ export default {
 .input {
 	position: relative;
 	width: 100%;
+	padding-top: 22px;
 	border: 1px solid #f1f1f1;
 	border-radius: 4px;
-	padding-top: 22px;
 
 	&__label {
 		position: absolute;
@@ -51,22 +56,22 @@ export default {
 	}
 
 	&__text {
+		box-sizing: border-box;
 		width: 100%;
 		padding: 6px 8px;
 		font-size: 14px;
 		border: none;
 		outline: none;
-		box-sizing: border-box;
 	}
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-	-webkit-appearance: none;
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
 	margin: 0;
+	appearance: none;
 }
 
-input[type="number"] {
-	-moz-appearance: textfield;
+input[type='number'] {
+	appearance: textfield;
 }
 </style>

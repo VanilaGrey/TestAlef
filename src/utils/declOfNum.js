@@ -6,4 +6,4 @@ export function declOfNum(number, titles) {
 	if (n1 > 1 && n1 < 5) return titles[1];
 	if (n1 === 1) return titles[0];
 	return titles[2];
-  }
+}

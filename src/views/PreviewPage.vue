@@ -25,24 +25,24 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useAppDataStore } from "@/stores/app-data";
-import { declOfNum } from "@/utils/declOfNum.js";
+import { computed } from 'vue';
+import { useAppDataStore } from '@/stores/app-data';
+import { declOfNum } from '@/utils/declOfNum.js';
 
 const { user } = useAppDataStore();
 
 const hasUserData = computed(() => {
 	// проверяем, есть ли имя или хотя бы один ребенок с именем
 	return (
-		(user.fullName && user.fullName.trim() !== "") ||
-		(user.children &&
-			user.children.some((child) => child.name && child.name.trim() !== ""))
+		user.fullName && user.fullName.trim() !== ''
+		|| user.children
+		&& user.children.some((child) => child.name && child.name.trim() !== '')
 	);
 });
 
 const ageWithWord = computed(() => {
-	if (!user.age) return "";
-	return `${user.age} ${declOfNum(user.age, ["год", "года", "лет"])}`;
+	if (!user.age) return '';
+	return `${user.age} ${declOfNum(user.age, ['год', 'года', 'лет'])}`;
 });
 </script>
 
@@ -50,10 +50,10 @@ const ageWithWord = computed(() => {
 .preview-page {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	margin: 0 auto;
 	width: 100%;
 	max-width: 620px;
+	margin: 0 auto;
+	gap: 20px;
 
 	&__list {
 		display: flex;
@@ -65,9 +65,9 @@ const ageWithWord = computed(() => {
 	}
 
 	&__item {
+		width: max-content;
 		padding: 10px 20px;
 		background-color: #f1f1f1;
-		width: max-content;
 	}
 }
 </style>
