@@ -8,6 +8,7 @@
 				label="ФИО"
 				placeholder="Введите ФИО"
 				type="text"
+				required
 			/>
 
 			<InputField
@@ -15,6 +16,7 @@
 				label="Возраст"
 				placeholder="Введите возраст"
 				type="number"
+				required
 			/>
 		</div>
 
@@ -41,23 +43,23 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import ChildForm from "@/components/ChildForm.vue";
-import InputField from "@/components/InputField.vue";
-import { useAppDataStore } from "@/stores/app-data";
-import BaseButton from "@/components/BaseButton.vue";
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import ChildForm from '@/components/ChildForm.vue';
+import InputField from '@/components/InputField.vue';
+import { useAppDataStore } from '@/stores/app-data';
+import BaseButton from '@/components/BaseButton.vue';
 
 const appData = useAppDataStore();
 const router = useRouter();
 
-const fullName = ref("");
-const age = ref("");
+const fullName = ref('');
+const age = ref('');
 const children = ref([]);
 
 function addChild() {
 	if (children.value.length < 5) {
-		children.value.push({ name: "", age: "" });
+		children.value.push({ name: '', age: '' });
 	}
 }
 
@@ -71,7 +73,7 @@ function saveData() {
 		age: age.value,
 		children: children.value,
 	};
-	router.push("/preview");
+	router.push('/preview');
 }
 </script>
 

@@ -14,27 +14,27 @@
 
 <script>
 export default {
-  name: 'InputField',
-  props: {
-    modelValue: [String, Number],
-    label: {
-      type: String,
-      required: true,
-    },
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    type: {
-      type: String,
-      default: 'text',
-      validator: (val) => ['text', 'number'].includes(val),
-    },
-    required: {
-      type: Boolean,
-      default: false,
-    },
-  },
+	name: 'InputField',
+	props: {
+		modelValue: [String, Number],
+		label: {
+			type: String,
+			required: true,
+		},
+		placeholder: {
+			type: String,
+			default: '',
+		},
+		type: {
+			type: String,
+			default: 'text',
+			validator: (val) => ['text', 'number'].includes(val),
+		},
+		required: {
+			type: Boolean,
+			default: false,
+		},
+	},
 };
 </script>
 
