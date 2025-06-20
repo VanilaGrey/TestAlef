@@ -101,6 +101,7 @@ function saveData() {
 
 	&__title {
 		margin: 0;
+		line-height: 1.5;
 	}
 }
 </style>
